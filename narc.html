@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>NARCOTIC CLOSET</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+    body {
+      font-family: "Amiri", "Cairo", "Tahoma", sans-serif;
+      direction: rtl;
+      margin: 0;
+      background: #fff;
+    }
+    .a4 {
+      width: 190mm;
+      min-height: 200mm;
+      margin: auto;
+      padding: 3mm;
+      border: 2px solid #000;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      width: 70px;
+    }
+    h2 {
+      text-align: center;
+      margin: 10px 0 5px;
+      font-size: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    th, td {
+      border: 2px solid #000;
+      padding: 3px;
+      text-align: center;
+    }
+    th {
+      background-color: #e0e0e0;
+    }
+    .btn {
+      margin: 10px 5px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .delete-col {
+      width: 50px;
+    }
+    @media print {
+      .btn,
+      td.delete-col,
+      th.delete-col {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="a4">
+  <div class="header">
+    <div></div>
+    <img src="AIWA.png" class="logo" alt="Logo">
+  </div>
+  <div style="margin: 10px 0; font-size: 14px;">
+    <strong>الشهر:</strong> <span contenteditable="true" style="border-bottom: 1px solid black; padding: 2px 20px;"></span>
+  </div>
+  <h2>NARCOTIC CLOSET</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>MOH ID</th>
+        <th>Medication Name</th>
+        <th>تاريخ الانتهاء</th>
+        <th>تاريخ الانتهاء</th>
+        <th class="delete-col">حذف</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>545024055</td>
+        <td>PETHIDINE HYDROCHLORIDE 50 MG / 1 ML INJ. <strong>(Narcotic)</strong></td>
+        <td></td><td></td>
+        <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+      </tr>
+      <tr>
+        <td>545024051</td>
+        <td>MORPHINE SULFATE 10 MG/ML INJ. <strong>(Narcotic)</strong></td>
+        <td></td><td></td>
+        <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+      </tr>
+      <tr>
+        <td>545064870</td>
+        <td>DIAZEPAM 10 MG/2 ML INJ. <strong>(Controlled Drug)</strong></td>
+        <td></td><td></td>
+        <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+      </tr>
+      <tr>
+        <td>545024064</td>
+        <td>FENTANYL 50 MCG / 10 ML INJ. <strong>(Narcotic)</strong></td>
+        <td></td><td></td>
+        <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+      </tr>
+      <tr>
+        <td>545034625</td>
+        <td>MIDAZOLAM 5 MG/ML 3 ML AMP (15 MG) INJ. <strong>(Controlled Drug)</strong></td>
+        <td></td><td></td>
+        <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px; font-size: 14px;">
+    <strong>الاسم والتوقيع:</strong> <span contenteditable="true" style="border-bottom: 1px solid black; padding: 2px 100px;"></span>
+  </div>
+  <button class="btn" onclick="addRow()">➕ إضافة صف</button>
+  <button class="btn" onclick="window.print()">🖨️ طباعة</button>
+</div>
+
+<script>
+  function addRow() {
+    const tbody = document.querySelector("table tbody");
+    const row = tbody.insertRow();
+    for (let i = 0; i < 4; i++) {
+      const cell = row.insertCell(i);
+      cell.contentEditable = true;
+    }
+    const deleteCell = row.insertCell(4);
+    deleteCell.className = "delete-col";
+    deleteCell.innerHTML = '<button onclick="removeRow(this)">🗑</button>';
+  }
+
+  function removeRow(button) {
+    button.closest("tr").remove();
+  }
+</script>
+
+</body>
+</html>

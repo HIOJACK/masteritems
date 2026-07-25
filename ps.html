@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>سجل الأدوية النفسية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+    body {
+      font-family: "Amiri", "Cairo", "Tahoma", sans-serif;
+      direction: rtl;
+      margin: 0;
+      background: #fff;
+    }
+    .a4 {
+      width: 190mm;
+      min-height: 200mm;
+      margin: auto;
+      padding: 3mm;
+      border: 2px solid #000;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      width: 70px;
+    }
+    h2 {
+      text-align: center;
+      margin: 10px 0 5px;
+      font-size: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    th, td {
+      border: 2px solid #000;
+      padding: 3px;
+      text-align: center;
+    }
+    th {
+      background-color: #e0e0e0;
+    }
+    .btn {
+      margin: 10px 5px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .delete-col {
+      width: 50px;
+    }
+    @media print {
+      .btn,
+      td.delete-col,
+      th.delete-col {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="a4">
+  <div class="header">
+    <div></div>
+    <img src="AIWA.png" class="logo" alt="Logo">
+  </div>
+  <div style="margin: 10px 0; font-size: 14px;">
+    <strong>الشهر:</strong> <span contenteditable="true" style="border-bottom: 1px solid black; padding: 2px 20px;"></span>
+  </div>
+  <h2>سجل الأدوية النفسية</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>MOH ID</th>
+        <th>Medication Name</th>
+        <th>TRADE NAME</th>
+        <th>تاريخ الانتهاء</th>
+        <th>تاريخ الانتهاء</th>
+        <th class="delete-col">حذف</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr><td>545031345</td><td>QUETIAPINE XL 200 MG TABLET</td><td>QUETTA XR TAB 200MG 30 P SPIMACO</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031349</td><td>QUETIAPINE XL 300 MG TABLET</td><td>QATPEN XR 300 MG TABLET DAMMAM PHARMA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031353</td><td>QUETIAPINE 100 MG TABLET</td><td>SEQUIT 100MG FC TAB JAMJOOM</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031354</td><td>QUETIAPINE 200 MG TABLET</td><td>SEQUIT 200MG F.C. TAB JAMJOOM PHARMA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031356</td><td>QUETIAPINE 300 MG TABLET</td><td>SEQUIT 300MG FC TAB JAMJOOM PHARMA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031358</td><td>VENLAFAXINE XR 150 MG CAPSULE</td><td>VEXAL 150MG CAP</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031378</td><td>OLANZAPINE 5 MG TABLET</td><td>PRANZA 5MG TAB JPI</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031379</td><td>OLANZAPINE 10 MG TABLET</td><td>PRANZA 10MG TAB JPI</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031410</td><td>AMITRIPTYLINE HCL 25 MG TABLET</td><td>AMIROL 25MG REMEDICA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031435</td><td>CLOMIPRAMINE HCL 25 MG CAPSULE</td><td>ANAFRANIL 25MG CAPSULE NOVARTIS</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031531</td><td>SULPIRIDE 50 MG TABLET</td><td>DOGMATIL 50MG SANOFI</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031534</td><td>RISPERIDONE 4 MG TABLET</td><td>RIDON 4MG TABUK PHARMACEUTICAL</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031536</td><td>RISPERIDONE 2 MG TABLET</td><td>RIDON 2MG TABUK PHARMACEUTICAL</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031538</td><td>CLOZAPINE 25 MG TABLET</td><td>LEPONEX 25MG TABLET MADAUS</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031539</td><td>CLOZAPINE 100 MG TABLET</td><td>LEPONEX 100MG 5X10 TAB MADAUS</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031587</td><td>ZUCLOPENTHIXOL ACETATE INJECTION 50 MG</td><td>CLOPIXOL LUNDBECK</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031588</td><td>ZUCLOPENTHIXOL DECANOATE 200 MG/1 ML INJ</td><td>CLOPIXOL 200 MG/INJ LUNDBECK</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031589</td><td>ARIPIPRAZOLE 10 MG TABLET</td><td>ARPENIA 10MG TAB TABUK PHARM</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031605</td><td>HALOPERIDOL 5 MG TABLET</td><td>HALDOL 5MG 25 TAB LUSOMEDICAMENTA QUELUZ</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031630</td><td>LITHIUM CARBONATE 300-450 MG TABLET</td><td>LICARB 300 MG AMAROX</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031632</td><td>ESCITALOPRAM 10 MG TABLET</td><td>ESCITAM 10MG TABLET AJA PHARMA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031635</td><td>MIRTAZAPINE 30 MG TABLET</td><td>REMERON 30MG TAB ORGANON</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031636</td><td>FLUVOXAMINE MALEATE 50 MG TABLET</td><td>FAVERIN 50MG TAB MYLAN LAB</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545031642</td><td>FLUVOXAMINE MALEATE 100 MG TABLET</td><td>FAVERIN 100MG TAB MYLAN LAB</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545032550</td><td>RISPERIDONE LIQUID 1 MG/ML 100 ML BOTTLE</td><td>RESEDRA 1MGML ORAL SOLUTION</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545034615</td><td>HALOPERIDOL 5 MG/ML INJECTION 1 ML AMP</td><td>HALDOL 5MGML 5AMP GSK ITALY</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545034618</td><td>HALOPERIDOL DECANOATE INJECTION 50 MG AMP</td><td>HALDOL DECANOAS INJ 50MGML GSK ITALY</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545034638</td><td>FLUOXETINE 20 MG CAPSULE</td><td>ANXETIN CAPSULES DAR AL DAWA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545051830</td><td>DULOXETINE HCL 60 MG CAPSULE</td><td>DULOXETINE 60 MG CAPSULE</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545071925</td><td>BENZTROPINE MESYLATE TABLET 2 MG SCORED</td><td>BENZTROPINE MES 2MG TAB LEADING PHARMA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+<tr><td>545074930</td><td>BENZTROPINE INJECTION 2 ML AMP</td><td>BENZTROPINE PHEBRA</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 40px; font-size: 14px;">
+    <strong>الاسم والتوقيع:</strong> <span contenteditable="true" style="border-bottom: 1px solid black; padding: 2px 100px;"></span>
+  </div>
+  <button class="btn" onclick="addRow()">➕ إضافة صف</button>
+  <button class="btn" onclick="window.print()">🖨️ طباعة</button>
+</div>
+
+<script>
+  function addRow() {
+    const tbody = document.querySelector("table tbody");
+    const row = tbody.insertRow();
+    for (let i = 0; i < 5; i++) {
+      const cell = row.insertCell(i);
+      cell.contentEditable = true;
+    }
+    const deleteCell = row.insertCell(5);
+    deleteCell.className = "delete-col";
+    deleteCell.innerHTML = '<button onclick="removeRow(this)">🗑</button>';
+  }
+
+  function removeRow(button) {
+    button.closest("tr").remove();
+  }
+</script>
+
+</body>
+</html>

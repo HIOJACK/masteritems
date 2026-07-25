@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>سجل الأدوية واللقاحات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+    body {
+      font-family: "Amiri", "Cairo", "Tahoma", sans-serif;
+      direction: rtl;
+      margin: 0;
+      background: #fff;
+    }
+    .a4 {
+      width: 190mm;
+      min-height: 200mm;
+      margin: auto;
+      padding: 3mm;
+      border: 2px solid #000;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      width: 70px;
+    }
+    h2 {
+      text-align: center;
+      margin: 10px 0 5px;
+      font-size: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    th, td {
+      border: 2px solid #000;
+      padding: 3px;
+      text-align: center;
+    }
+    th {
+      background-color: #e0e0e0;
+    }
+    .btn {
+      margin: 10px 5px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+
+    /* ✅ إخفاء زر الحذف والاختيار عند الطباعة */
+    @media print {
+      .btn,
+      #templateSelector,
+      .delete-col {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="a4">
+  <div class="header">
+    <div></div>
+    <img src="AIWA.png" class="logo" alt="Logo">
+  </div>
+
+  <select id="templateSelector" onchange="switchTemplate()">
+    <option value="medicines">🧪 الأدوية</option>
+    <option value="vaccines">💉 اللقاحات</option>
+  </select>
+
+  <!-- جدول الأدوية -->
+  <div id="medicinesTable">
+    <h2>سجل الأدوية</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>الرمز</th>
+          <th>الاسم</th>
+          <th>تاريخ الانتهاء</th>
+          <th>تاريخ الانتهاء</th>
+          <th>تاريخ الانتهاء</th>
+          <th class="delete-col">حذف</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>547034250</td>
+          <td>OXYTOCINE INJECTION 5 U / ML / AMP</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547034270</td>
+          <td>METHYLERGOMETRINE MALEATE INJECTION 0.2M</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547064580</td>
+          <td>INSULIN NEUTRAL HUMAN 100 IU</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547064592</td>
+          <td>INSULIN GLULISINE 100. INTERNATIONAL UNITS/ML</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547064593</td>
+          <td>INSULIN ASPART 100IU/ 3ML PEN</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547064599</td>
+          <td>INSULIN DETMIR 100UNIT/ML, 3ML PREFILLED</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547064600</td>
+          <td>INSULIN GLARGINE 100UNIT/ML, 3ML PREFILL</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547064605</td>
+          <td>INSULIN ASPART 30 IU/ML + INSULIN ASPART PROTAMINE 70 IU/ML</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>547064606</td>
+          <td>INSULIN GLARGINE 300 IU /ML PEN</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- جدول اللقاحات -->
+  <div id="vaccinesTable" class="hidden">
+    <h2>سجل اللقاحات</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>الرمز</th>
+          <th>الاسم</th>
+          <th>تاريخ الانتهاء</th>
+          <th>تاريخ الانتهاء</th>
+          <th>تاريخ الانتهاء</th>
+          <th class="delete-col">حذف</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>542014150</td>
+          <td>TETANUS VACCINE لقاح التيتانوس</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>5420142030</td>
+          <td>MEASLES MUMPS RUBELLA (MMR) LIVE VIRUS VACCINE (DILUENT 5120162800400 PFIZER)</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>542024340</td>
+          <td>TETANUS ANTITOXIN 1500 U / ML  مصل التيتانوس</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>542014277</td>
+          <td>HEPATITS A VACCINE ADULT - لقاح الكبدي (أ) للبالغين</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>542014105</td>
+          <td>INFLUENZA VACCINE لقاح الانفلونزا</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>5420142030</td>
+          <td>MEASLES VACCINE - (DILUENT 5120160000300)</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>542014270</td>
+          <td>HEPATITIS B VACCINE FOR ADULT - لقاح الكبدي (ب) بالغين</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>542014266</td>
+          <td>VARICELLA-ZOSTER VIRUS لقاح الجديري المائي</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+        <tr>
+          <td>542034440</td>
+          <td>TETANUS ANTITOXIN 1500 U / ML  مصل التيتانوس</td>
+          <td></td><td></td><td></td>
+          <td class="delete-col"><button onclick="removeRow(this)">🗑</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn" onclick="addRow()">➕ إضافة صف</button>
+  <button class="btn" onclick="window.print()">🖨️ طباعة</button>
+</div>
+
+<script>
+  function switchTemplate() {
+    const selected = document.getElementById("templateSelector").value;
+    document.getElementById("medicinesTable").classList.toggle("hidden", selected !== "medicines");
+    document.getElementById("vaccinesTable").classList.toggle("hidden", selected !== "vaccines");
+  }
+
+  function addRow() {
+    // نحدد القالب المختار
+    const selectedTemplate = document.getElementById("templateSelector").value;
+
+    // نختار الجسم المناسب من الجدول المعروض حالياً
+    const tableBody = document.querySelector(`#${selectedTemplate}Table table tbody`);
+
+    // نضيف صف جديد
+    const row = tableBody.insertRow();
+
+    // 5 خلايا قابلة للتعديل
+    for (let i = 0; i < 5; i++) {
+      const cell = row.insertCell(i);
+      cell.contentEditable = true;
+    }
+
+    // زر الحذف في العمود الأخير
+    const deleteCell = row.insertCell(5);
+    deleteCell.className = "delete-col";
+    deleteCell.innerHTML = '<button onclick="removeRow(this)">🗑</button>';
+  }
+
+  function removeRow(button) {
+    button.closest("tr").remove();
+  }
+</script>
+
+</body>
+</html>
