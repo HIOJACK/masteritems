@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>OPD DESK CLOSET</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+    body {
+      font-family: "Amiri", "Cairo", "Tahoma", sans-serif;
+      direction: rtl;
+      margin: 0;
+      background: #fff;
+    }
+    .a4 {
+      width: 190mm;
+      min-height: 200mm;
+      margin: auto;
+      padding: 3mm;
+      border: 2px solid #000;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      width: 70px;
+    }
+    h2 {
+      text-align: center;
+      margin: 10px 0 5px;
+      font-size: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    th, td {
+      border: 2px solid #000;
+      padding: 3px;
+      text-align: center;
+    }
+    th {
+      background-color: #e0e0e0;
+    }
+    .btn {
+      margin: 10px 5px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .delete-col {
+      width: 50px;
+    }
+    @media print {
+      .btn,
+      td.delete-col,
+      th.delete-col {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="a4">
+  <div class="header">
+    <div></div>
+    <img src="AIWA.png" class="logo" alt="Logo">
+  </div>
+  <div style="margin: 10px 0; font-size: 14px;">
+    <strong>الشهر:</strong> <span contenteditable="true" style="border-bottom: 1px solid black; padding: 2px 20px;"></span>
+  </div>
+  <h2>OPD DESK CLOSET</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>MOH ID</th>
+        <th>Medication Name</th>
+        <th>تاريخ الانتهاء</th>
+        <th>تاريخ الانتهاء</th>
+        <th class="delete-col">حذف</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>543021233</td><td>CLOPIDOGREL 75 MG/ TABLET</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545031600</td><td>HALOPERIDOL TABLET 1.5 MG / Tablet</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545034615</td><td>haloperidol 5 mg/mL injection, 1 mL ampo</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545034618</td><td>HALOPERIDOL DECANOATE INJ. 50 MG/ AMP.</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545051800</td><td>VALPROIC ACID 200 MG / TAB</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545051802</td><td>VALPROAT SODIUM TABLETS SR 500MG</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545051810</td><td>CARBAMZEPINE 200 MG / SCORED TAB</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545051819</td><td>LEVETIRACETAM 500 MG/ TABLET</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>545074930</td><td>BENZTROPINE INJECTION 2ML/AMP.</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>547071700</td><td>THYROXINE SODIUM 50 MCG/ TABLET,PACK NO</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>547071702</td><td>THYROXINE SODIUM 25 MCG / TABLET,PACK NO</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>547071710</td><td>THYROXINE SODIUM 100 MCG / TABLET,PACK N</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+      <tr><td>547071760</td><td>CARBIMAZOLE TABLET 5 MG</td><td></td><td></td><td class="delete-col"><button onclick="removeRow(this)">🗑</button></td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px; font-size: 14px;">
+    <strong>الاسم والتوقيع:</strong> <span contenteditable="true" style="border-bottom: 1px solid black; padding: 2px 100px;"></span>
+  </div>
+  <button class="btn" onclick="addRow()">➕ إضافة صف</button>
+  <button class="btn" onclick="window.print()">🖨️ طباعة</button>
+</div>
+
+<script>
+  function addRow() {
+    const tbody = document.querySelector("table tbody");
+    const row = tbody.insertRow();
+    for (let i = 0; i < 4; i++) {
+      const cell = row.insertCell(i);
+      cell.contentEditable = true;
+    }
+    const deleteCell = row.insertCell(4);
+    deleteCell.className = "delete-col";
+    deleteCell.innerHTML = '<button onclick="removeRow(this)">🗑</button>';
+  }
+
+  function removeRow(button) {
+    button.closest("tr").remove();
+  }
+</script>
+
+</body>
+</html>
