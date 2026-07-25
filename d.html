@@ -37,6 +37,7 @@
     <p class="note">نقوم بتسجيل بيانات الزيارة (مثل وقت الدخول والموقع التقريبي) لأغراض إحصائية.</p>
   </div>
 
+
   <script>
     async function logVisit() {
       try {
@@ -52,7 +53,7 @@
           screen: screen.width + 'x' + screen.height,
           referrer: document.referrer || 'مباشر'
         };
-        fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnTk2OOERH5L661daedcsSYyVgfW6vdAutoHkTgAzg0S1_0Jg1glLftb1ZydjMDa4mwhwYP2qha0J8MRiaQRR_P2IylEzwEYq_-a-bUWC-dWq07Ztmu946orbAnKfXoKMi8vN3J_WQuXQf5DcBHSBfYGpS6ofVGkm6wjcyYr3_0WrLujqGAA0F3LFRU4eQFFN8SfMdXk8vqK59iTQeEqig9E8G6eHpLDKgX5DbuCtTyw4zKelg07v9R2WXct-2tyoNhBvy_irzCyW4Ejr3qKupAOgsQ0zQ&lib=MOAFvkAjIl_o1BartCOftT0MJMbliQF9L', {
+        fetch('https://script.google.com/macros/s/AKfycbyGJlPFlr7kqzFMNCBqlbbnD0cXMtbVk5nXiP_sACYWV8uF3vHayO0BepDIctkQGe95/exec', {
           method: 'POST',
           mode: 'no-cors',
           body: JSON.stringify(data)
