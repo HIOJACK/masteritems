@@ -24,15 +24,13 @@
   }
 
   * { box-sizing: border-box; }
-
   html { -webkit-text-size-adjust: 100%; }
 
   body {
     margin: 0;
     font-family: "IBM Plex Sans Arabic", "Cairo", Tahoma, sans-serif;
     color: var(--ink);
-    background:
-      radial-gradient(120% 80% at 100% 0%, #f2f7f6 0%, var(--bg) 55%) fixed;
+    background: radial-gradient(120% 80% at 100% 0%, #f2f7f6 0%, var(--bg) 55%) fixed;
     min-height: 100vh;
     line-height: 1.6;
   }
@@ -43,66 +41,57 @@
     padding: clamp(24px, 5vw, 56px) clamp(18px, 4vw, 40px) 64px;
   }
 
-  /* ---------- Header ---------- */
   header {
     display: flex;
     align-items: center;
     gap: 20px;
     padding-bottom: 26px;
     border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
   }
   .brand-logo {
-    width: 62px;
-    height: 62px;
-    object-fit: contain;
-    flex-shrink: 0;
+    width: 62px; height: 62px;
+    object-fit: contain; flex-shrink: 0;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 8px;
+    border-radius: 14px; padding: 8px;
   }
+  .brand-text { flex: 1; min-width: 200px; }
   .brand-text .eyebrow {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: var(--petrol-soft);
-    font-weight: 600;
-    margin: 0 0 4px;
-    text-transform: uppercase;
+    font-size: 12px; letter-spacing: 2px;
+    color: var(--petrol-soft); font-weight: 600;
+    margin: 0 0 4px; text-transform: uppercase;
   }
   .brand-text h1 {
-    font-family: "Reem Kufi", sans-serif;
-    font-weight: 700;
+    font-family: "Reem Kufi", sans-serif; font-weight: 700;
     font-size: clamp(24px, 4.5vw, 34px);
-    color: var(--petrol);
-    margin: 0;
-    line-height: 1.2;
+    color: var(--petrol); margin: 0; line-height: 1.2;
   }
-  .brand-text .sub {
-    margin: 4px 0 0;
-    color: var(--muted);
-    font-size: 14px;
-  }
+  .brand-text .sub { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 
-  /* ---------- Section label ---------- */
+  .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn {
+    font-family: inherit; font-size: 14px; font-weight: 600;
+    border-radius: 11px; padding: 10px 16px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid transparent; transition: all .16s ease;
+  }
+  .btn svg { width: 17px; height: 17px; stroke-width: 2; }
+  .btn-primary { background: var(--petrol); color: #fff; }
+  .btn-primary:hover { background: #0b3b39; }
+  .btn-ghost { background: var(--surface); color: var(--petrol); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--petrol-soft); }
+  .btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--petrol-tint); }
+
   .section-label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
     margin: 36px 0 18px;
-    font-family: "Reem Kufi", sans-serif;
-    font-weight: 600;
-    color: var(--petrol);
-    font-size: 15px;
-    letter-spacing: 0.5px;
+    font-family: "Reem Kufi", sans-serif; font-weight: 600;
+    color: var(--petrol); font-size: 15px; letter-spacing: 0.5px;
   }
-  .section-label::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
-  /* ---------- Grid ---------- */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -110,145 +99,125 @@
   }
 
   .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 22px 22px 20px;
-    text-decoration: none;
-    color: inherit;
-    overflow: hidden;
+    position: relative; display: flex; flex-direction: column; gap: 12px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; padding: 22px 22px 20px;
+    text-decoration: none; color: inherit; overflow: hidden;
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
   .card::before {
-    content: "";
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: 0;
-    width: 4px;
-    background: var(--petrol);
+    content: ""; position: absolute; inset-block: 0; inset-inline-start: 0;
+    width: 4px; background: var(--petrol);
   }
   .card:hover, .card:focus-visible {
     transform: translateY(-3px);
     box-shadow: 0 14px 30px -18px rgba(15,76,74,.45);
-    border-color: var(--petrol-soft);
-    outline: none;
+    border-color: var(--petrol-soft); outline: none;
   }
   .card:focus-visible { box-shadow: 0 0 0 3px var(--petrol-tint), 0 14px 30px -18px rgba(15,76,74,.45); }
 
   .icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    background: var(--petrol-tint);
-    color: var(--petrol);
-    flex-shrink: 0;
+    width: 46px; height: 46px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: var(--petrol-tint); color: var(--petrol); flex-shrink: 0;
   }
   .icon svg { width: 26px; height: 26px; stroke-width: 1.7; }
 
   .card h3 {
-    margin: 0;
-    font-family: "Reem Kufi", sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    color: var(--ink);
+    margin: 0; font-family: "Reem Kufi", sans-serif; font-weight: 600;
+    font-size: 18px; color: var(--ink); word-break: break-word;
   }
-  .card p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 13.5px;
-    flex: 1;
-  }
+  .card p { margin: 0; color: var(--muted); font-size: 13.5px; flex: 1; word-break: break-word; }
   .card .foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 6px;
-    padding-top: 12px;
-    border-top: 1px dashed var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 6px; padding-top: 12px; border-top: 1px dashed var(--line);
   }
   .card .file {
-    font-family: "IBM Plex Sans Arabic", monospace;
-    font-size: 12px;
-    color: var(--muted);
-    direction: ltr;
+    font-family: "IBM Plex Sans Arabic", monospace; font-size: 12px;
+    color: var(--muted); direction: ltr; word-break: break-all;
   }
   .card .go {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--petrol-soft);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 13px; font-weight: 600; color: var(--petrol-soft);
+    display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
   }
   .card .go svg { width: 15px; height: 15px; transition: transform .18s ease; }
   .card:hover .go svg { transform: translateX(-4px); }
 
-  /* Emergency variant */
   .card.emergency::before { background: var(--emergency); }
   .card.emergency .icon { background: var(--emergency-tint); color: var(--emergency); }
   .card.emergency .go { color: var(--emergency); }
   .card.emergency:hover { box-shadow: 0 14px 30px -18px rgba(184,53,46,.45); border-color: var(--emergency); }
   .badge {
-    position: absolute;
-    inset-block-start: 16px;
-    inset-inline-end: 16px;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--emergency);
-    background: var(--emergency-tint);
-    padding: 3px 9px;
-    border-radius: 999px;
+    position: absolute; inset-block-start: 16px; inset-inline-end: 16px;
+    font-size: 11px; font-weight: 600; color: var(--emergency);
+    background: var(--emergency-tint); padding: 3px 9px; border-radius: 999px;
   }
 
-  /* Gold variant (controlled substances) */
   .card.gold::before { background: var(--gold); }
   .card.gold .icon { background: var(--gold-tint); color: var(--gold); }
   .card.gold .go { color: var(--gold); }
 
   .review {
-    font-size: 11px;
-    color: var(--gold);
-    background: var(--gold-tint);
-    padding: 2px 8px;
-    border-radius: 999px;
-    font-weight: 600;
+    position: absolute; inset-block-start: 16px; inset-inline-end: 16px;
+    font-size: 11px; color: var(--gold); background: var(--gold-tint);
+    padding: 2px 8px; border-radius: 999px; font-weight: 600;
   }
+
+  .del {
+    position: absolute; inset-block-start: 12px; inset-inline-end: 12px;
+    width: 26px; height: 26px; border-radius: 8px; border: none;
+    background: #f3f6f5; color: var(--muted); cursor: pointer;
+    display: grid; place-items: center; font-size: 18px; line-height: 1;
+    transition: all .15s ease; z-index: 2;
+  }
+  .del:hover { background: var(--emergency-tint); color: var(--emergency); }
 
   footer {
-    margin-top: 44px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 16px;
-    justify-content: space-between;
+    margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 13px;
+    display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between;
   }
 
-  @media (max-width: 480px) {
-    header { flex-direction: row; }
-    .grid { grid-template-columns: 1fr; }
+  .overlay {
+    position: fixed; inset: 0; background: rgba(16,48,46,.45);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px; z-index: 50; backdrop-filter: blur(2px);
+  }
+  .overlay.open { display: flex; }
+  .modal {
+    background: var(--surface); border-radius: 18px; width: 100%;
+    max-width: 460px; padding: 26px; box-shadow: 0 24px 60px -20px rgba(0,0,0,.35);
+    max-height: 90vh; overflow-y: auto;
+  }
+  .modal h2 {
+    font-family: "Reem Kufi", sans-serif; color: var(--petrol);
+    margin: 0 0 4px; font-size: 20px;
+  }
+  .modal .hint { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; font-family: inherit; font-size: 14px; color: var(--ink);
+    padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px;
+    background: #fbfdfc; transition: border-color .15s ease;
+  }
+  .field textarea { resize: vertical; min-height: 60px; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--petrol-soft); background: #fff;
+  }
+  .field .req { color: var(--emergency); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .modal-actions .btn { flex: 1; justify-content: center; }
+  .code-box {
+    width: 100%; font-family: monospace; font-size: 12px; direction: ltr;
+    text-align: left; min-height: 180px; padding: 12px; border-radius: 10px;
+    border: 1px solid var(--line); background: #f7faf9; resize: vertical;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+  @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
-  /* Load-in */
-  .card { animation: rise .5s ease backwards; }
-  .grid .card:nth-child(1) { animation-delay: .02s; }
-  .grid .card:nth-child(2) { animation-delay: .06s; }
-  .grid .card:nth-child(3) { animation-delay: .10s; }
-  .grid .card:nth-child(4) { animation-delay: .14s; }
-  .grid .card:nth-child(5) { animation-delay: .18s; }
-  .grid .card:nth-child(6) { animation-delay: .22s; }
+  .card { animation: rise .45s ease backwards; }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 </style>
 </head>
@@ -256,147 +225,276 @@
 <div class="wrap">
 
   <header>
-    <img src="AIWA.png" class="brand-logo" alt="شعار AIWA"
-         onerror="this.style.display='none'">
+    <img src="AIWA.png" class="brand-logo" alt="شعار AIWA" onerror="this.style.display='none'">
     <div class="brand-text">
       <p class="eyebrow">قسم الصيدلية</p>
       <h1>سجلات ونماذج الصيدلية</h1>
       <p class="sub">اختر النموذج المطلوب لعرضه أو طباعته</p>
     </div>
+    <div class="header-actions">
+      <button class="btn btn-primary" onclick="openAddModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        إضافة نموذج
+      </button>
+      <button class="btn btn-ghost" onclick="openExportModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        نسخ كود الإضافات
+      </button>
+    </div>
   </header>
 
   <!-- ============ سجلات المراقبة ============ -->
   <div class="section-label">سجلات المراقبة</div>
-  <div class="grid">
+  <div class="grid" id="grid-monitoring" data-section="monitoring">
 
-    <!-- temp.html  (مؤكد) -->
     <a class="card" href="temp.html">
-      <div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/>
-          <line x1="12" y1="9" x2="12" y2="14"/>
-        </svg>
-      </div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/><line x1="12" y1="9" x2="12" y2="14"/></svg></div>
       <h3>سجل درجة الحرارة</h3>
       <p>سجل يومي لدرجة حرارة الأقسام والثلاجات خلال الشهر.</p>
-      <div class="foot">
-        <span class="file">temp.html</span>
-        <span class="go">فتح
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        </span>
-      </div>
+      <div class="foot"><span class="file">temp.html</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>
     </a>
 
-    <!-- refcon.html  (تخمين — عدّل العنوان) -->
     <a class="card" href="refcon.html">
-      <div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
-          <path d="M6 6l12 12M18 6L6 18"/>
-        </svg>
-      </div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M6 6l12 12M18 6L6 18"/></svg></div>
       <h3>مراقبة الثلاجات</h3>
       <p>نموذج متابعة وضبط ثلاجات حفظ الأدوية.</p>
-      <div class="foot">
-        <span class="file">refcon.html</span>
-        <span class="go">فتح
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        </span>
-      </div>
+      <div class="foot"><span class="file">refcon.html</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>
     </a>
 
   </div>
 
   <!-- ============ أدوية الطوارئ ============ -->
   <div class="section-label">أدوية الطوارئ</div>
-  <div class="grid">
+  <div class="grid" id="grid-emergency" data-section="emergency">
 
-    <!-- crashcart.html  (مؤكد) -->
     <a class="card emergency" href="crashcart.html">
       <span class="badge">حرِج</span>
-      <div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      </div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
       <h3>سجل أدوية عربة الطوارئ</h3>
       <p>قائمة أدوية عربة الإنعاش مع الكميات القياسية وتواريخ الانتهاء.</p>
-      <div class="foot">
-        <span class="file">crashcart.html</span>
-        <span class="go">فتح
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        </span>
-      </div>
+      <div class="foot"><span class="file">crashcart.html</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>
     </a>
 
   </div>
 
   <!-- ============ المخدرات والمواد الخاضعة للرقابة ============ -->
   <div class="section-label">المخدرات والمواد الخاضعة للرقابة</div>
-  <div class="grid">
+  <div class="grid" id="grid-narcotics" data-section="narcotics">
 
-    <!-- narc.html  (تخمين — عدّل العنوان) -->
     <a class="card gold" href="narc.html">
-      <div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M10.5 20.5a5.5 5.5 0 0 1-7-7l7-7a5.5 5.5 0 0 1 7 7z"/>
-          <line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/>
-        </svg>
-      </div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a5.5 5.5 0 0 1-7-7l7-7a5.5 5.5 0 0 1 7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg></div>
       <h3>سجل المخدرات</h3>
       <p>سجل صرف ومتابعة الأدوية المخدرة الخاضعة للرقابة.</p>
-      <div class="foot">
-        <span class="file">narc.html</span>
-        <span class="go">فتح
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        </span>
-      </div>
+      <div class="foot"><span class="file">narc.html</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>
     </a>
 
-    <!-- narcohandover.html  (تخمين — عدّل العنوان) -->
     <a class="card gold" href="narcohandover.html">
-      <div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="16 3 21 3 21 8"/><line x1="21" y1="3" x2="13" y2="11"/>
-          <polyline points="8 21 3 21 3 16"/><line x1="3" y1="21" x2="11" y2="13"/>
-        </svg>
-      </div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="21" y1="3" x2="13" y2="11"/><polyline points="8 21 3 21 3 16"/><line x1="3" y1="21" x2="11" y2="13"/></svg></div>
       <h3>تسليم واستلام المخدرات</h3>
       <p>نموذج تسليم واستلام المناوبة للأدوية المخدرة.</p>
-      <div class="foot">
-        <span class="file">narcohandover.html</span>
-        <span class="go">فتح
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        </span>
-      </div>
+      <div class="foot"><span class="file">narcohandover.html</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>
     </a>
 
-    <!-- ps.html  (تخمين — عدّل العنوان) -->
     <a class="card" href="ps.html">
-      <span class="review" style="position:absolute; inset-block-start:16px; inset-inline-end:16px;">راجِع الاسم</span>
-      <div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-        </svg>
-      </div>
+      <span class="review">راجِع الاسم</span>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
       <h3>نموذج ps</h3>
       <p>لم أتعرّف على محتوى هذا الملف — غيّر العنوان والوصف حسب الغرض منه.</p>
-      <div class="foot">
-        <span class="file">ps.html</span>
-        <span class="go">فتح
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        </span>
-      </div>
+      <div class="foot"><span class="file">ps.html</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>
     </a>
 
   </div>
 
+  <!-- ============ نماذج أخرى (يظهر عند وجود إضافات) ============ -->
+  <div class="section-label" id="label-other" style="display:none;">نماذج أخرى</div>
+  <div class="grid" id="grid-other" data-section="other" style="display:none;"></div>
+
   <footer>
     <span>قسم الصيدلية — نظام السجلات</span>
-    <span>حدّث القائمة عند إضافة نماذج جديدة</span>
+    <span>الإضافات محفوظة على هذا الجهاز فقط</span>
   </footer>
 
 </div>
+
+<!-- ===== نافذة الإضافة ===== -->
+<div class="overlay" id="add-overlay" onclick="if(event.target===this)closeAddModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="add-title">
+    <h2 id="add-title">إضافة نموذج جديد</h2>
+    <p class="hint">تُحفظ الخانة على متصفح هذا الجهاز. لجعلها ظاهرة للجميع استخدم زر «نسخ كود الإضافات».</p>
+
+    <div class="field">
+      <label>القسم <span class="req">*</span></label>
+      <select id="f-section">
+        <option value="monitoring">سجلات المراقبة</option>
+        <option value="emergency">أدوية الطوارئ</option>
+        <option value="narcotics">المخدرات والمواد الخاضعة للرقابة</option>
+        <option value="other">نماذج أخرى</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>عنوان النموذج <span class="req">*</span></label>
+      <input type="text" id="f-title" placeholder="مثال: سجل استلام المستلزمات" maxlength="80">
+    </div>
+
+    <div class="field">
+      <label>وصف مختصر</label>
+      <textarea id="f-desc" placeholder="اختياري — سطر يوضّح الغرض من النموذج" maxlength="160"></textarea>
+    </div>
+
+    <div class="field">
+      <label>اسم الملف أو الرابط <span class="req">*</span></label>
+      <input type="text" id="f-file" placeholder="مثال: newform.html" dir="ltr">
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeAddModal()">إلغاء</button>
+      <button class="btn btn-primary" onclick="submitAdd()">إضافة الخانة</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== نافذة التصدير ===== -->
+<div class="overlay" id="export-overlay" onclick="if(event.target===this)closeExportModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="exp-title">
+    <h2 id="exp-title">كود الإضافات للحفظ الدائم</h2>
+    <p class="hint">انسخ الكود، والصقه داخل ملف <b>index.html</b> في القسم المناسب (قبل سطر إغلاق الشبكة <code>&lt;/div&gt;</code>)، ثم ارفع الملف على GitHub. عندها تظهر الخانات للجميع.</p>
+    <textarea class="code-box" id="export-code" readonly></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeExportModal()">إغلاق</button>
+      <button class="btn btn-primary" onclick="copyExport()" id="copy-btn">نسخ الكود</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var STORE_KEY = 'aiwa_pharmacy_custom_cards_v1';
+
+  var SECTION_NAMES = {
+    monitoring: 'سجلات المراقبة',
+    emergency: 'أدوية الطوارئ',
+    narcotics: 'المخدرات والمواد الخاضعة للرقابة',
+    other: 'نماذج أخرى'
+  };
+
+  function loadCards() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+  function saveCards(cards) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(cards)); }
+    catch (e) { alert('تعذّر الحفظ في هذا المتصفح. ستبقى الخانة ظاهرة حتى تحديث الصفحة فقط.'); }
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function cardHTML(c) {
+    var descHtml = c.desc ? '<p>'+esc(c.desc)+'</p>' : '<p></p>';
+    return ''+
+      '<a class="card" href="'+esc(c.file)+'" data-id="'+esc(c.id)+'">'+
+        '<button class="del" title="حذف" onclick="deleteCard(event,\''+esc(c.id)+'\')">&times;</button>'+
+        '<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>'+
+        '<h3>'+esc(c.title)+'</h3>'+
+        descHtml+
+        '<div class="foot"><span class="file">'+esc(c.file)+'</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>'+
+      '</a>';
+  }
+
+  function renderAll() {
+    document.querySelectorAll('.card[data-id]').forEach(function(el){ el.remove(); });
+    var cards = loadCards();
+    cards.forEach(function(c){
+      var grid = document.getElementById('grid-' + c.section) || document.getElementById('grid-other');
+      grid.insertAdjacentHTML('beforeend', cardHTML(c));
+    });
+    var otherGrid = document.getElementById('grid-other');
+    var hasOther = otherGrid.querySelector('.card');
+    otherGrid.style.display = hasOther ? '' : 'none';
+    document.getElementById('label-other').style.display = hasOther ? '' : 'none';
+  }
+
+  function openAddModal() {
+    document.getElementById('add-overlay').classList.add('open');
+    setTimeout(function(){ document.getElementById('f-title').focus(); }, 30);
+  }
+  function closeAddModal() {
+    document.getElementById('add-overlay').classList.remove('open');
+    document.getElementById('f-title').value = '';
+    document.getElementById('f-desc').value = '';
+    document.getElementById('f-file').value = '';
+  }
+  function submitAdd() {
+    var title = document.getElementById('f-title').value.trim();
+    var file  = document.getElementById('f-file').value.trim();
+    var desc  = document.getElementById('f-desc').value.trim();
+    var section = document.getElementById('f-section').value;
+    if (!title) { alert('اكتب عنوان النموذج.'); return; }
+    if (!file)  { alert('اكتب اسم الملف أو الرابط.'); return; }
+
+    var cards = loadCards();
+    cards.push({
+      id: 'c' + Date.now() + Math.floor(Math.random()*1000),
+      section: section, title: title, desc: desc, file: file
+    });
+    saveCards(cards);
+    renderAll();
+    closeAddModal();
+  }
+
+  function deleteCard(ev, id) {
+    ev.preventDefault();
+    if (!confirm('حذف هذه الخانة؟')) return;
+    var cards = loadCards().filter(function(c){ return c.id !== id; });
+    saveCards(cards);
+    renderAll();
+  }
+
+  function openExportModal() {
+    var cards = loadCards();
+    var box = document.getElementById('export-code');
+    if (!cards.length) {
+      box.value = 'لا توجد إضافات بعد. أضف نموذجاً أولاً ثم عد لهذه النافذة.';
+    } else {
+      var out = '';
+      ['monitoring','emergency','narcotics','other'].forEach(function(sec){
+        var inSec = cards.filter(function(c){ return c.section === sec; });
+        if (!inSec.length) return;
+        out += '\n<!-- ضع هذه الخانات داخل قسم: ' + SECTION_NAMES[sec] + '  (grid-' + sec + ') -->\n';
+        inSec.forEach(function(c){
+          var d = c.desc ? esc(c.desc) : '';
+          out += '<a class="card" href="'+esc(c.file)+'">\n'+
+                 '  <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>\n'+
+                 '  <h3>'+esc(c.title)+'</h3>\n'+
+                 '  <p>'+d+'</p>\n'+
+                 '  <div class="foot"><span class="file">'+esc(c.file)+'</span><span class="go">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span></div>\n'+
+                 '</a>\n';
+        });
+      });
+      box.value = out.trim();
+    }
+    document.getElementById('export-overlay').classList.add('open');
+  }
+  function closeExportModal() { document.getElementById('export-overlay').classList.remove('open'); }
+  function copyExport() {
+    var box = document.getElementById('export-code');
+    box.select();
+    try {
+      document.execCommand('copy');
+      var btn = document.getElementById('copy-btn');
+      var t = btn.textContent; btn.textContent = 'تم النسخ ✓';
+      setTimeout(function(){ btn.textContent = t; }, 1500);
+    } catch (e) { alert('انسخ النص يدوياً.'); }
+  }
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { closeAddModal(); closeExportModal(); }
+  });
+
+  renderAll();
+</script>
 </body>
 </html>
