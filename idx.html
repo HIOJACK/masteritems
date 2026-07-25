@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سجلات الصيدلية — الفهرس</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eaf0ef;
+    --surface: #ffffff;
+    --ink: #16302e;
+    --muted: #5f736f;
+    --line: #d6e2df;
+    --petrol: #0f4c4a;
+    --petrol-soft: #1a6b67;
+    --petrol-tint: #e3efec;
+    --emergency: #b8352e;
+    --emergency-tint: #f8e7e5;
+    --gold: #9a7b2e;
+    --gold-tint: #f2ebd8;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans Arabic", "Cairo", Tahoma, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(120% 80% at 100% 0%, #f2f7f6 0%, var(--bg) 55%) fixed;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 56px) clamp(18px, 4vw, 40px) 64px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-logo {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 8px;
+  }
+  .brand-text .eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--petrol-soft);
+    font-weight: 600;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+  }
+  .brand-text h1 {
+    font-family: "Reem Kufi", sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 4.5vw, 34px);
+    color: var(--petrol);
+    margin: 0;
+    line-height: 1.2;
+  }
+  .brand-text .sub {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ---------- Section label ---------- */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 36px 0 18px;
+    font-family: "Reem Kufi", sans-serif;
+    font-weight: 600;
+    color: var(--petrol);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ---------- Grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px 22px 20px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 4px;
+    background: var(--petrol);
+  }
+  .card:hover, .card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -18px rgba(15,76,74,.45);
+    border-color: var(--petrol-soft);
+    outline: none;
+  }
+  .card:focus-visible { box-shadow: 0 0 0 3px var(--petrol-tint), 0 14px 30px -18px rgba(15,76,74,.45); }
+
+  .icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: var(--petrol-tint);
+    color: var(--petrol);
+    flex-shrink: 0;
+  }
+  .icon svg { width: 26px; height: 26px; stroke-width: 1.7; }
+
+  .card h3 {
+    margin: 0;
+    font-family: "Reem Kufi", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13.5px;
+    flex: 1;
+  }
+  .card .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+  }
+  .card .file {
+    font-family: "IBM Plex Sans Arabic", monospace;
+    font-size: 12px;
+    color: var(--muted);
+    direction: ltr;
+  }
+  .card .go {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--petrol-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card .go svg { width: 15px; height: 15px; transition: transform .18s ease; }
+  .card:hover .go svg { transform: translateX(-4px); }
+
+  /* Emergency variant */
+  .card.emergency::before { background: var(--emergency); }
+  .card.emergency .icon { background: var(--emergency-tint); color: var(--emergency); }
+  .card.emergency .go { color: var(--emergency); }
+  .card.emergency:hover { box-shadow: 0 14px 30px -18px rgba(184,53,46,.45); border-color: var(--emergency); }
+  .badge {
+    position: absolute;
+    inset-block-start: 16px;
+    inset-inline-end: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--emergency);
+    background: var(--emergency-tint);
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+
+  /* Gold variant (controlled substances) */
+  .card.gold::before { background: var(--gold); }
+  .card.gold .icon { background: var(--gold-tint); color: var(--gold); }
+  .card.gold .go { color: var(--gold); }
+
+  .review {
+    font-size: 11px;
+    color: var(--gold);
+    background: var(--gold-tint);
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 480px) {
+    header { flex-direction: row; }
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  /* Load-in */
+  .card { animation: rise .5s ease backwards; }
+  .grid .card:nth-child(1) { animation-delay: .02s; }
+  .grid .card:nth-child(2) { animation-delay: .06s; }
+  .grid .card:nth-child(3) { animation-delay: .10s; }
+  .grid .card:nth-child(4) { animation-delay: .14s; }
+  .grid .card:nth-child(5) { animation-delay: .18s; }
+  .grid .card:nth-child(6) { animation-delay: .22s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="AIWA.png" class="brand-logo" alt="شعار AIWA"
+         onerror="this.style.display='none'">
+    <div class="brand-text">
+      <p class="eyebrow">قسم الصيدلية</p>
+      <h1>سجلات ونماذج الصيدلية</h1>
+      <p class="sub">اختر النموذج المطلوب لعرضه أو طباعته</p>
+    </div>
+  </header>
+
+  <!-- ============ سجلات المراقبة ============ -->
+  <div class="section-label">سجلات المراقبة</div>
+  <div class="grid">
+
+    <!-- temp.html  (مؤكد) -->
+    <a class="card" href="temp.html">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/>
+          <line x1="12" y1="9" x2="12" y2="14"/>
+        </svg>
+      </div>
+      <h3>سجل درجة الحرارة</h3>
+      <p>سجل يومي لدرجة حرارة الأقسام والثلاجات خلال الشهر.</p>
+      <div class="foot">
+        <span class="file">temp.html</span>
+        <span class="go">فتح
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- refcon.html  (تخمين — عدّل العنوان) -->
+    <a class="card" href="refcon.html">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </div>
+      <h3>مراقبة الثلاجات</h3>
+      <p>نموذج متابعة وضبط ثلاجات حفظ الأدوية.</p>
+      <div class="foot">
+        <span class="file">refcon.html</span>
+        <span class="go">فتح
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ============ أدوية الطوارئ ============ -->
+  <div class="section-label">أدوية الطوارئ</div>
+  <div class="grid">
+
+    <!-- crashcart.html  (مؤكد) -->
+    <a class="card emergency" href="crashcart.html">
+      <span class="badge">حرِج</span>
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
+      <h3>سجل أدوية عربة الطوارئ</h3>
+      <p>قائمة أدوية عربة الإنعاش مع الكميات القياسية وتواريخ الانتهاء.</p>
+      <div class="foot">
+        <span class="file">crashcart.html</span>
+        <span class="go">فتح
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ============ المخدرات والمواد الخاضعة للرقابة ============ -->
+  <div class="section-label">المخدرات والمواد الخاضعة للرقابة</div>
+  <div class="grid">
+
+    <!-- narc.html  (تخمين — عدّل العنوان) -->
+    <a class="card gold" href="narc.html">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.5 20.5a5.5 5.5 0 0 1-7-7l7-7a5.5 5.5 0 0 1 7 7z"/>
+          <line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/>
+        </svg>
+      </div>
+      <h3>سجل المخدرات</h3>
+      <p>سجل صرف ومتابعة الأدوية المخدرة الخاضعة للرقابة.</p>
+      <div class="foot">
+        <span class="file">narc.html</span>
+        <span class="go">فتح
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- narcohandover.html  (تخمين — عدّل العنوان) -->
+    <a class="card gold" href="narcohandover.html">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 3 21 3 21 8"/><line x1="21" y1="3" x2="13" y2="11"/>
+          <polyline points="8 21 3 21 3 16"/><line x1="3" y1="21" x2="11" y2="13"/>
+        </svg>
+      </div>
+      <h3>تسليم واستلام المخدرات</h3>
+      <p>نموذج تسليم واستلام المناوبة للأدوية المخدرة.</p>
+      <div class="foot">
+        <span class="file">narcohandover.html</span>
+        <span class="go">فتح
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- ps.html  (تخمين — عدّل العنوان) -->
+    <a class="card" href="ps.html">
+      <span class="review" style="position:absolute; inset-block-start:16px; inset-inline-end:16px;">راجِع الاسم</span>
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <h3>نموذج ps</h3>
+      <p>لم أتعرّف على محتوى هذا الملف — غيّر العنوان والوصف حسب الغرض منه.</p>
+      <div class="foot">
+        <span class="file">ps.html</span>
+        <span class="go">فتح
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    <span>قسم الصيدلية — نظام السجلات</span>
+    <span>حدّث القائمة عند إضافة نماذج جديدة</span>
+  </footer>
+
+</div>
+</body>
+</html>
